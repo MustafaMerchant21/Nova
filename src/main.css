@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@plugin './hero.ts';
+/* Note: You may need to change the path to fit your project structure */
+@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
+
+/* Blob Animations */
+@keyframes blob-rotate-pulse {
+  0% {
+    transform: rotate(0deg) scale(1) translate(0, 0);
+  }
+  25% {
+    transform: rotate(90deg) scale(1.15) translate(10px, -10px);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.9) translate(-5px, 15px);
+  }
+  75% {
+    transform: rotate(270deg) scale(1.1) translate(15px, 5px);
+  }
+  100% {
+    transform: rotate(360deg) scale(1) translate(0, 0);
+  }
+}
+
+@keyframes blob-rotate-pulse-reverse {
+  0% {
+    transform: rotate(360deg) scale(1) translate(0, 0);
+  }
+  25% {
+    transform: rotate(270deg) scale(1.2) translate(-15px, 10px);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.85) translate(10px, -10px);
+  }
+  75% {
+    transform: rotate(90deg) scale(1.15) translate(-10px, -15px);
+  }
+  100% {
+    transform: rotate(0deg) scale(1) translate(0, 0);
+  }
+}
+
+.animate-blob-rotate-pulse {
+  animation: blob-rotate-pulse 5s ease-in-out infinite;
+}
+
+.animate-blob-rotate-pulse-reverse {
+  animation: blob-rotate-pulse-reverse 7s ease-in-out infinite;
+}
+

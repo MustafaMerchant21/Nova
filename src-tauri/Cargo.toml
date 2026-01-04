@@ -1,0 +1,47 @@
+[package]
+name = "Nova"
+version = "0.1.0"
+description = "A smart desktop automation assistant, which helps you automate repetitive tasks and boost your productivity."
+authors = ["Mustafa Merchant"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "nova_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# HTTP client for API calls
+reqwest = { version = "0.13.1"}
+tokio = { version = "1", features = ["full"] }
+
+# Error handling
+anyhow = "1.0"
+thiserror = "2.0.17"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+# File operations
+walkdir = "2.4"  # For recursive directory walking
+regex = "1.10"   # For pattern matching
+
+# Date/time for timestamps
+chrono = "0.4"
+
+[features]
+custom-protocol = ["tauri/custom-protocol"]
+
